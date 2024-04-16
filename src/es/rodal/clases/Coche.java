@@ -10,8 +10,8 @@ public class Coche extends VehiculoMotorizado  {
 
 	@Override
 	public void arrancar() {
+		super.arrancar();
 		System.out.println("Arrancando coche");
-		this.momentoInicial= System.currentTimeMillis();
 	} 
 	
 
