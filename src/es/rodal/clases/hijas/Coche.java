@@ -16,6 +16,18 @@ public class Coche extends VehiculoAMotor  {
 	public void arrancar() {
 		super.arrancar();
 		System.out.println("\n\nArrancando coche");
-	} 
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("\nCoche con matricula: ").append(getMatricula())
+		.append(", de color: ").append(getColor())
+		.append(", tiene: ").append(getPotencia()).append(" caballos");
+		return builder.toString();
+	}
+	
+	
+	
 	
 }

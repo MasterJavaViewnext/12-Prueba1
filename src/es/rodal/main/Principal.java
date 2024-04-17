@@ -2,7 +2,11 @@ package es.rodal.main;
 
 import java.time.LocalDateTime;
 import java.time.Month;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
+import es.rodal.clases.CochePorPotenciaComparator;
 import es.rodal.clases.Color;
 import es.rodal.clases.RegistroTacometro;
 import es.rodal.clases.hijas.Camion;
@@ -13,6 +17,25 @@ public class Principal {
 
 		//COCHE
 			Coche coche = new Coche(Color.AMARILLO, "9836 FDN");
+			Coche coche2 = new Coche(Color.NEGRO, "0000 VVV");
+			Coche coche3 = new Coche(Color.NEGRO, "1231 BBB");
+			coche.setPotencia(200);
+			coche2.setPotencia(100);
+			coche3.setPotencia(300);
+
+			//LISTA COCHES
+			List<Coche> coches = new ArrayList<>();
+			coches.add(coche);
+			coches.add(coche2);
+			coches.add(coche3);
+			System.out.println("Sin ordenar" + coches.toString());
+			Collections.sort(coches);
+			System.out.println("Ordenado por matricula" + coches.toString());
+			Collections.sort(coches, new CochePorPotenciaComparator());
+			System.out.println("Ordenado por potencia" + coches.toString());
+			
+			
+			//VIAJE
 			coche.arrancar();
 			
 			Thread.sleep(5000);
@@ -55,5 +78,7 @@ public class Principal {
 			
 			camion.resultadoViaje();
 			camion.showTacometro();
+			
+
 	}
 }

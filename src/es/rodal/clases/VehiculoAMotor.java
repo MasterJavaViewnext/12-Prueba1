@@ -11,6 +11,7 @@ public abstract class VehiculoAMotor extends Vehiculo implements Comparable<Vehi
 
 	private final String MATRICULA;
 	
+	private int potencia;
 	private long tiempoInicial;//en milisegundos
 	private long tiempoTranscurrido;//en milisegundos
 	private long ultimoTiempo;//en milisegundos
@@ -22,6 +23,14 @@ public abstract class VehiculoAMotor extends Vehiculo implements Comparable<Vehi
 		this.MATRICULA = matricula;
 	}
 
+	public int getPotencia() {
+		return this.potencia;
+	}
+	
+	public void setPotencia(int potencia) {
+		this.potencia = potencia;
+	}
+	
 	public String getMatricula() {
 		return MATRICULA;
 	}
