@@ -29,7 +29,7 @@ public class Principal {
 		//CAMION
 			Camion camion = new Camion(Color.BLANCO, "9999 BHF"); 
 			
-			//TACOMETRO
+			//REGISTROS TACOMETRO
 			camion.setRegistroTacometro(new RegistroTacometro(
 					LocalDateTime.of(2024, Month.MARCH, 27, 15, 30),
 					LocalDateTime.of(2024, Month.MARCH, 27, 20, 30), 410));

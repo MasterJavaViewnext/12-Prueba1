@@ -30,14 +30,20 @@ public abstract class VehiculoAMotor extends Vehiculo implements Comparable<Vehi
 		return this.velocidadMedia;
 	}
 	
-	//Método que establece el tiempo en le cominza el viaje e inicializa el ultimoTiempo
+	/**
+	 * Método que establece el tiempo en le cominza el viaje e inicializa el ultimoTiempo
+	 * cada uno de los hijos sobreescribirá este método
+	 */
 	@Override
 	public void arrancar() {
 		this.tiempoInicial = System.currentTimeMillis();
 		this.ultimoTiempo = this.tiempoInicial;
 	}
 	
-	//Método 
+	/**
+	 * Método que va registrando los metros recorridos en ese movimiento, también el tiempo
+	 * transcurrido y muestra por pantalla la velocidad media en km/h de este ultimo movimiento
+	 */
 	@Override
 	public void moverse(long metros) {
 		long tiempoActual = System.currentTimeMillis();
@@ -47,6 +53,9 @@ public abstract class VehiculoAMotor extends Vehiculo implements Comparable<Vehi
 		this.ultimoTiempo = tiempoActual;
 	}
 
+	/**
+	 * Método que finaliza el viaje y establece el tiempo total y la velocidad media en km/h
+	 */
 	@Override
 	public void parar() {
 		System.out.println("Parando " + this.getClass().getSimpleName().toLowerCase());
@@ -59,6 +68,14 @@ public abstract class VehiculoAMotor extends Vehiculo implements Comparable<Vehi
 		return this.MATRICULA.compareTo(o.MATRICULA);
 	}
 	
+	/**
+	 * Método que calcula la velocidad en kilometros por hora mediante los metros recorridos en 
+	 * el tiempo comprendido entre 2 tiempos recibidos en milisegundos
+	 * @param tiempoInicial
+	 * @param tiempoFinal
+	 * @param metros
+	 * @return velocidadKmH
+	 */
 	public double calcularVelocidad(long tiempoInicial, long tiempoFinal, long metros) {
 		double velocidadMS = metros/((tiempoFinal-tiempoInicial)/1000);
 		double velocidadKmH = velocidadMS * 3.6;

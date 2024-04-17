@@ -11,6 +11,7 @@ public class Coche extends VehiculoAMotor  {
 		super(color, matricula);
 	}
 
+	//Llama al metodo padre y muestra una linea por pantalla
 	@Override
 	public void arrancar() {
 		super.arrancar();
