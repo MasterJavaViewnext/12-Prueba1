@@ -1,7 +1,7 @@
 package es.rodal.clases;
 
 /**
- * Clase que tendran los vehiculos a motor
+ * Clase de la que tendran una instancia todos los vehiculos a motor
  * @author Admin
  *
  */

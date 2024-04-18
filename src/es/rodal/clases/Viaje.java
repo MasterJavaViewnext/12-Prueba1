@@ -67,8 +67,7 @@ public class Viaje {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("\n--------------RESULTADOS DEL VIAJE-----------------\n")
-				.append(this.metrosRecorridos).append(" metros recorridos en ").append(this.tiempoTranscurrido/1000).append(" segundos")
+		builder.append(this.metrosRecorridos).append(" metros recorridos en ").append(this.tiempoTranscurrido/1000).append(" segundos")
 				.append(" lo que da una velocidad media de: ").append(this.velocidadMedia).append("km/h");
 		return builder.toString();
 	}

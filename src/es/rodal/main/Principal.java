@@ -9,33 +9,36 @@ import java.util.List;
 import es.rodal.clases.VehiculoPorPotenciaComparator;
 import es.rodal.clases.Color;
 import es.rodal.clases.RegistroTacometro;
+import es.rodal.clases.Vehiculo;
+import es.rodal.clases.VehiculoAMotor;
 import es.rodal.clases.hijas.Camion;
 import es.rodal.clases.hijas.Coche;
 
 public class Principal {
 	public static void main(String[] args) throws InterruptedException {
 
-		//COCHE
-			Coche coche = new Coche(Color.AMARILLO, "9836 FDN", 1001);
+		
+			
+		//LISTA DE VEHICULOS ORDEN
+			Coche coche = new Coche(Color.AMARILLO, "9836 FDN", 100);
 			Coche coche2 = new Coche(Color.NEGRO, "0000 VVV", 300);
-			Coche coche3 = new Coche(Color.NEGRO, "1231 BBB", 200);
-			coche.setPotencia(200);
-			coche2.setPotencia(100);
-			coche3.setPotencia(300);
+			Coche coche3 = new Coche(Color.ROJO, "1231 BBB", 200);
+			Camion camion = new Camion(Color.BLANCO, "9999 BHF", 400); 
 
-			//LISTA COCHES
-			List<Coche> coches = new ArrayList<>();
-			coches.add(coche);
-			coches.add(coche2);
-			coches.add(coche3);
-			System.out.println("Sin ordenar" + coches.toString());
-			Collections.sort(coches);
-			System.out.println("Ordenado por matricula" + coches.toString());
-			Collections.sort(coches, new VehiculoPorPotenciaComparator());
-			System.out.println("Ordenado por potencia" + coches.toString());
+			
+			List<VehiculoAMotor> vehiculos = new ArrayList<>();
+			vehiculos.add(coche);
+			vehiculos.add(camion);
+			vehiculos.add(coche2);
+			vehiculos.add(coche3);
+			System.out.println("Coches sin ordenar" + vehiculos.toString());
+			Collections.sort(vehiculos);
+			System.out.println("\nOrdenado por matricula" + vehiculos.toString());
+			Collections.sort(vehiculos, new VehiculoPorPotenciaComparator());
+			System.out.println("\nOrdenado por potencia" + vehiculos.toString());
 			
 			
-			//VIAJE
+		//VIAJE COCHE(se podrian crear multiples viajes)
 			coche.arrancar();
 			coche.conducir();
 			
@@ -51,7 +54,6 @@ public class Principal {
 			coche.resultadoViajes();
 		
 		//CAMION
-			Camion camion = new Camion(Color.BLANCO, "9999 BHF", 400); 
 			
 			//REGISTROS TACOMETRO
 			camion.setRegistroTacometro(new RegistroTacometro(
@@ -80,7 +82,6 @@ public class Principal {
 			
 			camion.resultadoViajes();
 			camion.showTacometro();
-			
 
 	}
 }

@@ -2,6 +2,11 @@ package es.rodal.clases;
 
 import java.util.Comparator;
 
+/**
+ * Comparator para ordenar vehiculos por pootencia
+ * @author Admin
+ *
+ */
 public class VehiculoPorPotenciaComparator implements Comparator<VehiculoAMotor> {
 
 	@Override

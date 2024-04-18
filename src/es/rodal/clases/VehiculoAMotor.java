@@ -21,7 +21,7 @@ public abstract class VehiculoAMotor extends Vehiculo implements Comparable<Vehi
 		super(color);
 		this.MATRICULA = matricula;
 		motor = new Motor(potencia);
-		viajes = new LinkedList<>();
+		viajes = new LinkedList<>();//LinkedList porque el orden es importante
 	}
 
 	public int getPotencia() {
@@ -97,6 +97,7 @@ public abstract class VehiculoAMotor extends Vehiculo implements Comparable<Vehi
 	}
 
 	public void resultadoViajes() {
+		System.out.println("--------------RESULTADOS DE LOS VIAJES-----------------");
 		for (Viaje viaje : viajes) {
 			System.out.println(viaje.toString());
 		}
