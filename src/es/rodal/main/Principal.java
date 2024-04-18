@@ -32,7 +32,7 @@ public class Principal {
 			vehiculos.add(coche2);
 			vehiculos.add(coche3);
 			vehiculos.add(barco);
-			System.out.println("Coches sin ordenar" + vehiculos.toString());
+			System.out.println("Vehiculos sin ordenar" + vehiculos.toString());
 			Collections.sort(vehiculos);
 			System.out.println("\nOrdenado por matricula" + vehiculos.toString());
 			Collections.sort(vehiculos, new VehiculoPorPotenciaComparator());
@@ -67,8 +67,8 @@ public class Principal {
 					LocalDateTime.of(2024, Month.MARCH, 29, 15, 30),
 					LocalDateTime.of(2024, Month.MARCH, 29, 20, 30), 490));
 
-			//VIAJE
-			Thread.sleep(8000);
+			//VIAJE 1 DE CAMION
+			Thread.sleep(5000);
 			camion.arrancar();
 			camion.conducir();
 			
@@ -80,7 +80,8 @@ public class Principal {
 			camion.moverse(100);
 			
 			camion.parar();
-			//VIAJE
+			
+			//VIAJE 2 DE CAMION
 			Thread.sleep(3000);
 			camion.arrancar();
 			camion.conducir();
@@ -91,6 +92,8 @@ public class Principal {
 			camion.moverse(110);
 			Thread.sleep(6000);
 			camion.moverse(105);
+			Thread.sleep(6000);
+			camion.moverse(95);
 			
 			camion.parar();
 			
