@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import es.rodal.clases.CochePorPotenciaComparator;
+import es.rodal.clases.VehiculoPorPotenciaComparator;
 import es.rodal.clases.Color;
 import es.rodal.clases.RegistroTacometro;
 import es.rodal.clases.hijas.Camion;
@@ -16,9 +16,9 @@ public class Principal {
 	public static void main(String[] args) throws InterruptedException {
 
 		//COCHE
-			Coche coche = new Coche(Color.AMARILLO, "9836 FDN");
-			Coche coche2 = new Coche(Color.NEGRO, "0000 VVV");
-			Coche coche3 = new Coche(Color.NEGRO, "1231 BBB");
+			Coche coche = new Coche(Color.AMARILLO, "9836 FDN", 1001);
+			Coche coche2 = new Coche(Color.NEGRO, "0000 VVV", 300);
+			Coche coche3 = new Coche(Color.NEGRO, "1231 BBB", 200);
 			coche.setPotencia(200);
 			coche2.setPotencia(100);
 			coche3.setPotencia(300);
@@ -31,12 +31,13 @@ public class Principal {
 			System.out.println("Sin ordenar" + coches.toString());
 			Collections.sort(coches);
 			System.out.println("Ordenado por matricula" + coches.toString());
-			Collections.sort(coches, new CochePorPotenciaComparator());
+			Collections.sort(coches, new VehiculoPorPotenciaComparator());
 			System.out.println("Ordenado por potencia" + coches.toString());
 			
 			
 			//VIAJE
 			coche.arrancar();
+			coche.conducir();
 			
 			Thread.sleep(5000);
 			coche.moverse(100);
@@ -46,11 +47,11 @@ public class Principal {
 			coche.moverse(100);
 			
 			coche.parar();
-			
-			coche.resultadoViaje();
+			System.out.println(coche);
+			coche.resultadoViajes();
 		
 		//CAMION
-			Camion camion = new Camion(Color.BLANCO, "9999 BHF"); 
+			Camion camion = new Camion(Color.BLANCO, "9999 BHF", 400); 
 			
 			//REGISTROS TACOMETRO
 			camion.setRegistroTacometro(new RegistroTacometro(
@@ -66,6 +67,7 @@ public class Principal {
 			//VIAJE
 			Thread.sleep(8000);
 			camion.arrancar();
+			camion.conducir();
 			
 			Thread.sleep(3000);
 			camion.moverse(60);
@@ -76,7 +78,7 @@ public class Principal {
 			
 			camion.parar();
 			
-			camion.resultadoViaje();
+			camion.resultadoViajes();
 			camion.showTacometro();
 			
 

@@ -7,27 +7,15 @@ public class Coche extends VehiculoAMotor  {
 	
 	public final static int NUM_RUEDAS = 4;
 	
-	public Coche(Color color, String matricula) {
-		super(color, matricula);
+	public Coche(Color color, String matricula, int potencia) {
+		super(color, matricula, potencia);
 	}
 
 	//Llama al metodo padre y muestra una linea por pantalla
 	@Override
-	public void arrancar() {
-		super.arrancar();
-		System.out.println("\n\nArrancando coche");
+	public void conducir() {
+		super.conducir();
+		System.out.println("Conduciendo coche");
 	}
-
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("\nCoche con matricula: ").append(getMatricula())
-		.append(", de color: ").append(getColor())
-		.append(", tiene: ").append(getPotencia()).append(" caballos");
-		return builder.toString();
-	}
-	
-	
-	
 	
 }

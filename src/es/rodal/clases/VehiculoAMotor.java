@@ -1,5 +1,8 @@
 package es.rodal.clases;
 
+import java.util.LinkedList;
+import java.util.List;
+
 /**
  * Clase abstracta que extiende de Vehiculo e implementa  las interfaces Comparable (por MATRICULA)
  * y Conducible que se implementan los 3 métodos. Esta clase controla todo lo referente a cada viaje:
@@ -11,42 +14,50 @@ public abstract class VehiculoAMotor extends Vehiculo implements Comparable<Vehi
 
 	private final String MATRICULA;
 	
-	private int potencia;
-	private long tiempoInicial;//en milisegundos
-	private long tiempoTranscurrido;//en milisegundos
-	private long ultimoTiempo;//en milisegundos
-	protected long metrosRecorridos;
-	private double velocidadMedia;//en kilometros/hora
+	private Motor motor;
+	List<Viaje> viajes;
 
-	public VehiculoAMotor(Color color, String matricula) {
+	public VehiculoAMotor(Color color, String matricula, int potencia) {
 		super(color);
 		this.MATRICULA = matricula;
+		motor = new Motor(potencia);
+		viajes = new LinkedList<>();
 	}
 
 	public int getPotencia() {
-		return this.potencia;
+		return this.motor.getPotencia();
 	}
 	
 	public void setPotencia(int potencia) {
-		this.potencia = potencia;
+		this.motor.setPotencia(potencia);
 	}
 	
 	public String getMatricula() {
 		return MATRICULA;
 	}
-
-	public double getVelocidadMedia() {
-		return this.velocidadMedia;
+	
+	public Viaje getViajeActual() {
+		return viajes.get(viajes.size()-1);
 	}
 	
 	/**
-	 * Método que establece el tiempo en le cominza el viaje e inicializa el ultimoTiempo
+	 * Método que llama al metodo arrancar de motor y añade el nombre de la clase
+	 */
+	public void arrancar() {
+		this.motor.arrancar();
+		System.out.println(this.getClass().getSimpleName().toLowerCase());
+	}
+	
+	/**
+	 * Método que establece el tiempo en le comienza el viaje e inicializa el ultimoTiempo
 	 * cada uno de los hijos sobreescribirá este método
 	 */
 	@Override
-	public void arrancar() {
-		this.tiempoInicial = System.currentTimeMillis();
-		this.ultimoTiempo = this.tiempoInicial;
+	public void conducir() {
+		long tiempoActual = System.currentTimeMillis();
+		viajes.add(new Viaje());
+		getViajeActual().setTiempoInicial(tiempoActual);
+		getViajeActual().setUltimoTiempo(tiempoActual);
 	}
 	
 	/**
@@ -57,9 +68,9 @@ public abstract class VehiculoAMotor extends Vehiculo implements Comparable<Vehi
 	public void moverse(long metros) {
 		long tiempoActual = System.currentTimeMillis();
 		System.out.println("--> " + metros + " metros avanzados a una velocidad de " 
-					+ calcularVelocidad(this.ultimoTiempo, tiempoActual, metros) + "km/h" );
-		this.metrosRecorridos += metros;
-		this.ultimoTiempo = tiempoActual;
+					+ Viaje.calcularVelocidad(getViajeActual().getUltimoTiempo(), tiempoActual, metros) + "km/h" );
+		getViajeActual().setMetrosRecorridos(metros);
+		getViajeActual().setUltimoTiempo(tiempoActual);
 	}
 
 	/**
@@ -68,8 +79,8 @@ public abstract class VehiculoAMotor extends Vehiculo implements Comparable<Vehi
 	@Override
 	public void parar() {
 		System.out.println("Parando " + this.getClass().getSimpleName().toLowerCase());
-		tiempoTranscurrido = this.ultimoTiempo - this.tiempoInicial;
-		this.velocidadMedia = calcularVelocidad(this.tiempoInicial, this.ultimoTiempo, this.metrosRecorridos);
+		getViajeActual().setTiempoTranscurrido();
+		getViajeActual().setVelocidadMedia();
 	}
 
 	@Override
@@ -77,25 +88,18 @@ public abstract class VehiculoAMotor extends Vehiculo implements Comparable<Vehi
 		return this.MATRICULA.compareTo(o.MATRICULA);
 	}
 	
-	/**
-	 * Método que calcula la velocidad en kilometros por hora mediante los metros recorridos en 
-	 * el tiempo comprendido entre 2 tiempos recibidos en milisegundos
-	 * @param tiempoInicial
-	 * @param tiempoFinal
-	 * @param metros
-	 * @return velocidadKmH
-	 */
-	public double calcularVelocidad(long tiempoInicial, long tiempoFinal, long metros) {
-		double velocidadMS = metros/((tiempoFinal-tiempoInicial)/1000);
-		double velocidadKmH = velocidadMS * 3.6;
-		return velocidadKmH;
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("\n").append(this.getClass().getSimpleName()).append(" con matricula: ").append(MATRICULA).append(" de color: ").append(this.getColor())
+				.append(" y ").append(getPotencia()).append(" caballos de potencia");
+		return builder.toString();
 	}
-	
-	public void resultadoViaje() {
-		System.out.println("\n--------------RESULTADOS DEL VIAJE-----------------");
-		System.out.println(this.getClass().getSimpleName() + " con matricula: " + this.MATRICULA + " de color: " + this.getColor());
-		System.out.println(this.metrosRecorridos + " metros recorridos en " + this.tiempoTranscurrido/1000 + " segundos");
-		System.out.println("Lo que da una velocidad media de: " + this.getVelocidadMedia() +"km/h");
+
+	public void resultadoViajes() {
+		for (Viaje viaje : viajes) {
+			System.out.println(viaje.toString());
+		}
 	}
 	
 

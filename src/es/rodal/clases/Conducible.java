@@ -6,7 +6,7 @@ package es.rodal.clases;
  *
  */
 public interface Conducible {
-	void arrancar();
+	void conducir();
 	void moverse(long metros);
 	void parar();
 }

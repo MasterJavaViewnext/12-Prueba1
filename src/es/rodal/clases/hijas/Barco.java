@@ -5,15 +5,15 @@ import es.rodal.clases.VehiculoAMotor;
 
 public class Barco extends VehiculoAMotor{
 
-	public Barco(Color color, String matricula) {
-		super(color, matricula);
+	public Barco(Color color, String matricula, int potencia) {
+		super(color, matricula, potencia);
 	}
 	
 	//Llama al metodo padre y muestra una linea por pantalla
 	@Override
-	public void arrancar() {
-		super.arrancar();
-		System.out.println("\n\nArrancando moto");
+	public void conducir() {
+		super.conducir();
+		System.out.println("Conduciendo barco");
 	} 
 	
 	public double kilometrosHoraToNudos(double velocidadKmH) {
