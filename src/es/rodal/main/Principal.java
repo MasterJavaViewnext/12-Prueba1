@@ -9,28 +9,29 @@ import java.util.List;
 import es.rodal.clases.VehiculoPorPotenciaComparator;
 import es.rodal.clases.Color;
 import es.rodal.clases.RegistroTacometro;
-import es.rodal.clases.Vehiculo;
 import es.rodal.clases.VehiculoAMotor;
+import es.rodal.clases.hijas.Barco;
 import es.rodal.clases.hijas.Camion;
 import es.rodal.clases.hijas.Coche;
 
 public class Principal {
 	public static void main(String[] args) throws InterruptedException {
 
-		
-			
-		//LISTA DE VEHICULOS ORDEN
-			Coche coche = new Coche(Color.AMARILLO, "9836 FDN", 100);
-			Coche coche2 = new Coche(Color.NEGRO, "0000 VVV", 300);
-			Coche coche3 = new Coche(Color.ROJO, "1231 BBB", 200);
-			Camion camion = new Camion(Color.BLANCO, "9999 BHF", 400); 
+		//CREACION INSTANCIAS VEHICULOS
+		Coche coche = new Coche(Color.AMARILLO, "9836 FDN", 100);
+		Coche coche2 = new Coche(Color.NEGRO, "0000 VVV", 300);
+		Coche coche3 = new Coche(Color.ROJO, "1231 BBB", 200);
+		Camion camion = new Camion(Color.BLANCO, "9999 BHF", 400); 
+		Barco barco = new Barco(Color.VERDE, "6ª-BA-1-000-18", 350);
 
 			
+		//LISTA DE VEHICULOS ORDEN	
 			List<VehiculoAMotor> vehiculos = new ArrayList<>();
 			vehiculos.add(coche);
 			vehiculos.add(camion);
 			vehiculos.add(coche2);
 			vehiculos.add(coche3);
+			vehiculos.add(barco);
 			System.out.println("Coches sin ordenar" + vehiculos.toString());
 			Collections.sort(vehiculos);
 			System.out.println("\nOrdenado por matricula" + vehiculos.toString());
@@ -52,9 +53,9 @@ public class Principal {
 			coche.parar();
 			System.out.println(coche);
 			coche.resultadoViajes();
-		
-		//CAMION
+
 			
+		//CAMION
 			//REGISTROS TACOMETRO
 			camion.setRegistroTacometro(new RegistroTacometro(
 					LocalDateTime.of(2024, Month.MARCH, 27, 15, 30),
