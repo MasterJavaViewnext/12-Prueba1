@@ -66,7 +66,7 @@ public class Principal {
 			camion.setRegistroTacometro(new RegistroTacometro(
 					LocalDateTime.of(2024, Month.MARCH, 29, 15, 30),
 					LocalDateTime.of(2024, Month.MARCH, 29, 20, 30), 490));
-			
+
 			//VIAJE
 			Thread.sleep(8000);
 			camion.arrancar();
@@ -80,7 +80,21 @@ public class Principal {
 			camion.moverse(100);
 			
 			camion.parar();
+			//VIAJE
+			Thread.sleep(3000);
+			camion.arrancar();
+			camion.conducir();
 			
+			Thread.sleep(3000);
+			camion.moverse(58);
+			Thread.sleep(5000);
+			camion.moverse(110);
+			Thread.sleep(6000);
+			camion.moverse(105);
+			
+			camion.parar();
+			
+			//RESULTADOS
 			camion.resultadoViajes();
 			camion.showTacometro();
 

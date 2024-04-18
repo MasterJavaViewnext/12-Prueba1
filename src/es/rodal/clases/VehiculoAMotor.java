@@ -98,9 +98,7 @@ public abstract class VehiculoAMotor extends Vehiculo implements Comparable<Vehi
 
 	public void resultadoViajes() {
 		System.out.println("--------------RESULTADOS DE LOS VIAJES-----------------");
-		for (Viaje viaje : viajes) {
-			System.out.println(viaje.toString());
-		}
+		viajes.forEach(System.out::println);
 	}
 	
 
